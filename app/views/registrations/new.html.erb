@@ -1,0 +1,42 @@
+<div>
+    <div class="form-container border border-dark">
+        <%= form_for( @user , remote: true) do |f| %>
+
+        <div class="fields email-block">
+            <%= f.label :email, "Email: " %>
+            <%= f.email_field :email %>
+        </div>
+
+        <div class="fields password-block">
+            <%= f.label :password, "Password: " %>
+            <%= f.password_field :password %>
+        </div>
+
+        <div class="fields confirm-block">
+            <%= f.label :password_confirmation, "Re-enter Password: " %>
+            <%= f.password_field :password_confirmation %>
+        </div>
+
+        <div class="fields first-name-block">
+            <%= f.label :first_name, "First name: " %>
+            <%= f.text_field :first_name %>
+        </div>
+
+        <div class="fields last-name-block">
+            <%= f.label :last_name, "Last name: " %>
+            <%= f.text_field :last_name %>
+        </div>
+
+        <div class="fields mobile-block">
+            <%= f.label :phone_number, "Mobile number: " %>
+            <%= f.telephone_field :phone_number %>
+        </div>
+
+        <div class="fields city-block">
+            <%= f.label :city, "City: " %>
+            <%= f.text_field :city %>
+        </div>
+
+        <% end %>
+    </div>
+</div>
