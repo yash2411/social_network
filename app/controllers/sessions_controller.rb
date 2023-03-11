@@ -12,13 +12,30 @@ class SessionsController < ApplicationController
       flash[:success] = "Yay you have logged in"
       redirect_to root_path
     else
-      flash[:error]=user&.errors&.full_messages&.first
+      flash[:danger]="Invalid user or password"
       redirect_to new_session_path
     end
   end
 
+  def forgot_password
+    render 'forgot_password'
+  end
+
+  def reset_password
+    user = User.find_by_email(params[:email])
+    if user
+      temp_password = SecureRandom.hex(6)
+      user.update(password: temp_password, password_confirmation: temp_password)
+      ForgotPasswordMailer.forgot_password(user).deliver_now
+      flash[:info] = "Your new password has been sent to your email."
+      redirect_to login_path
+    else
+      flash[:danger] = "No user found with this email."
+      redirect_to login_path
+    end
+  end
+
   def logout
-    
     cookies.delete(:user_id)
     redirect_to new_login_path
   end

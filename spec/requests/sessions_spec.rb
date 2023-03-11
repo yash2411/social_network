@@ -39,4 +39,24 @@ RSpec.describe "Sessions", type: :request do
     end
   end
 
+  describe "GET /forgot_password" do
+    it "should render forgot password form" do
+      get "/forgot_password" do
+      expect(response).to render_template(:forgot_password)
+      end
+    end
+  end
+
+  describe "POST /reset_password" do
+    it "should reset password" do
+      post "/reset_password", params: {email: subject.email}
+      expect(response).to redirect_to(:login)
+    end
+
+    it "should not reset password" do
+      post "/reset_password"
+      expect(response).to redirect_to(:login)
+    end
+  end
+
 end
