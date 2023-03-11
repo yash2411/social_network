@@ -11,5 +11,8 @@ require 'rails_helper'
 #   end
 # end
 RSpec.describe HomeHelper, type: :helper do
-  pending "add some examples to (or delete) #{__FILE__}"
+  it "should return true or false" do
+    user = create(:user)
+    cookies[:user_id]=user.id
+  end
 end

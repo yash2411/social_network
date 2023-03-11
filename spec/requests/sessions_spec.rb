@@ -33,8 +33,7 @@ RSpec.describe "Sessions", type: :request do
   describe "Logout" do
     it "should logout the user" do
       user = create(:user)
-      @request = ActionController::TestRequest.new({}, {}, nil)
-      @request.session = { user_id: user.id }  
+      cookies[:user_id] = user.id 
       delete "/logout"
       expect(response).to redirect_to(:new_login)
     end
