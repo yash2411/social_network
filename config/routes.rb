@@ -13,5 +13,7 @@ Rails.application.routes.draw do
   resources :sessions
   post '/login', to: 'sessions#login', as: :login
   get '/login', to: 'sessions#new', as: :new_login
+  get '/forgot_password', to: "sessions#forgot_password", as: :forgot_password
+  post '/reset_password', to: "sessions#reset_password", as: :reset_password
   delete '/logout', to: 'sessions#logout', as: :logout
 end
