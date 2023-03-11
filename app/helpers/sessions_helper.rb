@@ -1,9 +1,9 @@
 module SessionsHelper
     def logged_in?
-        !!session[:user_id]
+        !!cookies[:user_id]
     end
 
     def current_user
-        @current_user ||= User.find_by_id(session[:user_id])
+        @current_user ||= User.find_by_id(cookies[:user_id])
     end
 end

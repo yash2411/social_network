@@ -11,5 +11,18 @@ require 'rails_helper'
 #   end
 # end
 RSpec.describe SessionsHelper, type: :helper do
-  pending "add some examples to (or delete) #{__FILE__}"
+  describe "should conain the helper" do
+    before do
+      @user = create(:user)
+      cookies[:user_id] = @user.id
+    end
+  
+    it 'checks if a user is logged in' do
+      expect(logged_in?).to eq true
+    end
+
+    it 'checks current user presence' do
+      expect(current_user).to eq @user
+    end
+  end
 end
