@@ -1,6 +1,8 @@
-<% if user_activated? %>
+<% if current_user and current_user.activated? %>
     <h1> Welcome to the my Network </h1>
-<% else %>
+<% elsif current_user and current_user.activated.nil? %>
     <h3>Please verify your email to continue </h3>
     <%= link_to "Verify Email", send_otp_path, class: "btn btn-success" %>
+<% else %>
+    <p> This is the landing page </p>
 <% end %>

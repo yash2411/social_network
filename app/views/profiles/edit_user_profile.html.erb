@@ -1,22 +1,23 @@
 <%= javascript_include_tag 'login_signup', 'data-turbolinks-track' => true %>
 <div>
-    <h1 class="text-center mt-2">Let's create your account</h1>
+    <h1 class="text-center mt-2">Update your profile</h1>
     <div class="form-container">
-        <%= form_for( @user , url: signup_path, method: :post, remote: true) do |f| %>
+        <%= form_with(model: @user, url: update_user_profile_path(@user), method: :put, remote: true) do |f| %>
         <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+        <%= hidden_field_tag :id, @user.id %>
         <div class="fields first-name-block">
             <%= f.label :first_name, "First name: " %>
-            <%= f.text_field :first_name, class: "input-fields" %>
+            <%= f.text_field :first_name, value: @user&.first_name, class: "input-fields" %>
         </div>
 
         <div class="fields last-name-block">
             <%= f.label :last_name, "Last name: " %>
-            <%= f.text_field :last_name, class: "input-fields" %>
+            <%= f.text_field :last_name, value: @user&.last_name, class: "input-fields" %>
         </div>
 
         <div class="fields email-block">
             <%= f.label :email, "Your email: " %>
-            <%= f.email_field :email, class: "input-fields" %>
+            <%= f.email_field :email, value: @user&.email, class: "input-fields", disabled: true %>
         </div>
 
         <div class="fields password-block">
@@ -31,12 +32,12 @@
 
         <div class="fields mobile-block">
             <%= f.label :phone_number, "Mobile number: " %>
-            <%= f.telephone_field :phone_number, class: "input-fields" %>
+            <%= f.telephone_field :phone_number, value: @user&.phone_number, class: "input-fields" %>
         </div>
 
         <div class="fields city-block">
             <%= f.label :city, "City: " %>
-            <%= f.text_field :city, class: "input-fields" %>
+            <%= f.text_field :city, value: @user&.city, class: "input-fields" %>
         </div>
 
         <div class="fields">
@@ -45,9 +46,7 @@
         </div>
 
         <div class="form-submit">
-            <%= f.submit "Create an account", class: "submit", id: "account-btn" %>
-            <%= f.submit "Sign up", class: "submit", id: "signup-btn" %>
-            <%= link_to "Already signup?", login_path, class: "button-link" %>
+            <%= f.submit "Update profile", class: "submit", id: "account-btn" %>
         </div>
 
         <% end %>

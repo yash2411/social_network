@@ -7,7 +7,7 @@
 
         <div class="fields email-block">
             <%= f.label :email, "Your email: " %>
-            <%= f.email_field :email, value: current_user.email, class: "input-fields" %>
+            <%= f.email_field :email, value: current_user&.email, class: "input-fields" %>
         </div>
 
         <div class="fields email-block">

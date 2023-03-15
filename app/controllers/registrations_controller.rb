@@ -21,7 +21,7 @@ class RegistrationsController < ApplicationController
 
   def send_otp
     @current_user = User.find_by_id(cookies[:user_id])
-    unless @current_user.activated?
+    unless @current_user&.activated?
       SendOtpMailer.send_otp(@current_user).deliver_now
       flash[:success] = "We have sent an otp to your email."
       render 'send_otp'
@@ -56,6 +56,6 @@ class RegistrationsController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:first_name, :last_name, :email, :password, :password_confirmation, :phone_number, :city)
+    params.require(:user).permit(:first_name, :last_name, :email, :password, :password_confirmation, :phone_number, :city, :avatar)
   end
 end

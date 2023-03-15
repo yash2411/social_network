@@ -16,4 +16,8 @@ Rails.application.routes.draw do
   get '/forgot_password', to: "sessions#forgot_password", as: :forgot_password
   post '/reset_password', to: "sessions#reset_password", as: :reset_password
   delete '/logout', to: 'sessions#logout', as: :logout
+
+  resources :profiles 
+  get '/edit_profile', to: "profiles#edit_user_profile", as: :edit_user_profile
+  put '/update_profile', to: "profiles#update_user_profile", as: :update_user_profile
 end

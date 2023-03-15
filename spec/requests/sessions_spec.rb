@@ -42,7 +42,7 @@ RSpec.describe "Sessions", type: :request do
   describe "GET /forgot_password" do
     it "should render forgot password form" do
       get "/forgot_password" do
-      expect(response).to render_template(:forgot_password)
+      expect(response).to render_template('forgot_password')
       end
     end
   end
