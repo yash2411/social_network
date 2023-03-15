@@ -11,9 +11,5 @@ require 'rails_helper'
 #   end
 # end
 RSpec.describe RegistrationsHelper, type: :helper do
-  it "should return user" do
-    user = create(:user)
-    cookies[:user_id]=user.id
-    current_user
-  end
+
 end

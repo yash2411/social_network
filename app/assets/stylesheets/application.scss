@@ -15,20 +15,38 @@
  */
  @import "bootstrap";
 
+html{
+    position: relative;
+}
 *{
     box-sizing: border-box;
 }
 
 body{
-    background-image: linear-gradient(to right, rgba(15, 48, 107, 0), rgb(68, 51, 142));
-    animation-name: background-animation;
-    animation-duration: 6s;
-    animation-delay: -4s;
-    animation-iteration-count: infinite;
-    animation-timing-function: ease-in-out;
+    background-color: #5458cc;
+    // background-image: linear-gradient(to right, rgba(15, 48, 107, 0), rgb(68, 51, 142));
+    // animation-name: background-animation;
+    // animation-duration: 6s;
+    // animation-delay: -4s;
+    // animation-iteration-count: infinite;
+    // animation-timing-function: ease-in-out;
 }
 
-@keyframes background-animation {
-    from {background-color: rgba(10, 93, 237, 0);}
-    to {background-color: rgb(127, 101, 242); }
+// @keyframes background-animation {
+//     from {background-color: rgba(10, 93, 237, 0);}
+//     to {background-color: rgb(127, 101, 242); }
+// }
+
+.body-content{
+    position: relative;
+    top: 100px;
+    margin: 0 1rem;
+    z-index: 50;
+}
+
+.alert{
+    display: block;
+    width: 80%;
+    text-align: center;
+    margin: 0 auto !important;
 }

@@ -20,4 +20,7 @@ class User < ApplicationRecord
   on: :create, confirmation: {case_sensitive: true}
   validates :email, presence: true, format: Devise.email_regexp, uniqueness: {:case_sensitive => false}
   validates_uniqueness_of :phone_number, allow_nil: true, allow_blank: true
+
+  has_one_attached :avatar
+  validates :avatar, presence: {message: "Please upload your profile"}
 end

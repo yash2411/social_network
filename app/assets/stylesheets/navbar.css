@@ -1,0 +1,48 @@
+
+
+.navbar{
+    height: 60px;
+    margin: 5px 0;
+    border-radius: 30px;
+    width: 100% !important;
+}
+
+.search-bar{
+    margin-right: 2rem;
+}
+.search{
+    height: 40px;
+    border-radius: 50px;
+    box-sizing: border-box;
+}
+.profile-image{
+    height: 50px;
+    width: 50px;
+    border-radius: 25px;
+    cursor: pointer;
+}
+.dropdown-menu {
+    position: absolute;
+    top: 70px;
+    right: 0;
+    background-color: #5458cc !important;
+    padding: 10px;
+    border: 1px solid #ccc;
+  }
+
+.profile-link{
+    color: black !important;
+  }
+@media screen and (max-width: 400px) {
+    .search{
+        width: 100px;
+        padding: 0 0.2rem;
+    }
+}
+
+@media screen and (max-width: 200px) {
+    .search{
+        width: 70px;
+        padding: 0 0.2rem;
+    }
+}

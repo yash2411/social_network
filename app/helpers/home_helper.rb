@@ -1,5 +1,5 @@
 module HomeHelper
-    def user_activated?
-        User.find_by_id(cookies[:user_id]).activated? ? true : false
+    def logged_in
+        @current_user = User.find_by_id(cookies[:user_id])
     end
 end

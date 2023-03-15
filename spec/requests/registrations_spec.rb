@@ -10,7 +10,8 @@ RSpec.describe "Registrations", type: :request do
         last_name: "Pandey",
         email: "yash1@gmail.com",
         password: "Rails@1234",
-        password_confirmation: "Rails@1234"
+        password_confirmation: "Rails@1234",
+        avatar: fixture_file_upload(Rails.root.join('spec', 'fixtures', 'images', 'sample.png'), 'image/png')
     }
   }
 }
