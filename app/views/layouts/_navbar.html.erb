@@ -1,49 +1,84 @@
 <%= javascript_include_tag 'navbar', 'data-turbolinks-track' => true, defer: true %>
 <div class="container-fluid navbar-container">
-  <nav class="navbar navbar-expand-lg navbar-dark bg-dark px-2">
-    <a class="navbar-brand" href="#">My Site</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
 
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav mr-auto">
+  <div class="nav-mobile">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark px-2" aria-label="">
+      <div class="search-bar">
+        <form class="form-inline my-2 my-lg-0">
+          <input class="search" type="search" placeholder="Search" aria-label="Search">
+          <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+        </form>
+      </div>
+      <a class="navbar-brand" href="#">My Site</a>
+      <div class="ham-burger">
+        <div class="ham-burger-icon"></div>
+        <div class="ham-burger-icon"></div>
+        <div class="ham-burger-icon"></div>
+      </div>
+    </nav>
+  </div>
+
+  <div class="user-dropdown">
+    <ul class="dropdown" style="display:none">
+      <% if !current_user %>
         <li class="nav-item active">
-          <%= link_to "Home", root_path, class: "nav-link active" %>
+          <%= link_to "Signup", signup_path, class: "nav-link active" %>
         </li>
-        <% if !current_user %>
-          <li class="nav-item active">
-            <%= link_to "Signup", signup_path, class: "nav-link active" %>
-          </li>
+      <% else %>
+        <li class="nav-item">
+          <%= button_to "Edit", edit_user_profile_path(current_user), method: :get, data: {turbo: false}, class: "btn btn-link nav-link active profile-link" %>
+        </li>
 
-          <li class="nav-item active">
-            <%= link_to "Login", login_path, class: "nav-link active" %>
-          </li>
-        <% end %>
-      </ul>
-    </div>
-    <div class="search-bar">
-      <form class="form-inline my-2 my-lg-0">
-        <input class="search" type="search" placeholder="Search" aria-label="Search">
-        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-      </form>
-    </div>
-
-    <% if current_user %>
-      <div class="profile-dropdown">
-      <% if current_user&.avatar&.attached? %>
-        <%= image_tag current_user.avatar, class: 'profile-image' %>
+        <li class="nav-item">
+          <%= button_to "Logout", logout_path({id: current_user.id}), method: :delete, data: {turbo: false}, class: "btn btn-link nav-link active profile-link" %>
+        </li>
       <% end %>
-        <ul class="dropdown-menu" style="display:none;">
-          <li class="nav-item">
-            <%= button_to "Edit", edit_user_profile_path(current_user), method: :get, data: {turbo: false}, class: "btn btn-link nav-link active profile-link" %>
-          </li>
+    </ul>
+  </div>
 
-          <li class="nav-item">
-            <%= button_to "Logout", logout_path({id: current_user.id}), method: :delete, data: {turbo: false}, class: "btn btn-link nav-link active profile-link" %>
-          </li>
+  <span class='nav-desktop'>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark px-2" aria-label="">
+      <a class="navbar-brand" href="#">My Site</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+          <div class="search-bar">
+            <form class="form-inline my-2 my-lg-0">
+              <input class="search" type="search" placeholder="Search" aria-label="Search">
+              <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+            </form>
+          </div>
+          <% if !current_user %>
+            <li class="nav-item active">
+              <%= link_to "Signup", signup_path, class: "nav-link active" %>
+            </li>
+
+            <li class="nav-item active">
+              <%= link_to "Login", login_path, class: "nav-link active" %>
+            </li>
+          <% end %>
         </ul>
       </div>
-    <% end %>
-  </nav>
+
+      <% if current_user %>
+        <div class="profile-dropdown">
+        <% if current_user&.avatar&.attached? %>
+          <%= image_tag current_user.avatar, class: 'profile-image' %>
+        <% end %>
+          <ul class="dropdown-menu" style="display:none;">
+            <li class="nav-item">
+              <%= button_to "Edit", edit_user_profile_path(current_user), method: :get, data: {turbo: false}, class: "btn btn-link nav-link active profile-link" %>
+            </li>
+
+            <li class="nav-item">
+              <%= button_to "Logout", logout_path({id: current_user.id}), method: :delete, data: {turbo: false}, class: "btn btn-link nav-link active profile-link" %>
+            </li>
+          </ul>
+        </div>
+      <% end %>
+    </nav>
+  </span>
 </div>

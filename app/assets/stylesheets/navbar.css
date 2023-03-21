@@ -1,7 +1,4 @@
-
-
 .navbar{
-    height: 60px;
     margin: 5px 0;
     border-radius: 30px;
     width: 100% !important;
@@ -33,6 +30,42 @@
 .profile-link{
     color: black !important;
   }
+.nav-mobile {
+    display: none;
+}
+
+@media screen and (max-width: 1000px) {
+    .nav-desktop {
+        display: none;
+    }
+    .nav-mobile {
+        display: block;
+    }
+    .ham-burger-icon {
+        width: 35px;
+        height: 5px;
+        background-color: white;
+        margin: 6px 5px;
+    }
+    .navbar{
+        margin: 5px 0;
+        border-radius: 30px;
+        width: 100% !important;
+    }
+    .user-dropdown{
+        position: absolute;
+        top: 80px;
+        right: 15px;
+        background-color: #5458cc !important;
+    }
+
+    .dropdown{
+
+        padding: 10px;
+        z-index: 5;
+        list-style: none;
+    }
+}
 @media screen and (max-width: 400px) {
     .search{
         width: 100px;
